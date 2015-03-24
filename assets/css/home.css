@@ -1,0 +1,12 @@
+.expire{
+	color:red;
+}
+.active{
+	color:green;
+}
+.success{
+	color:green;
+}
+.error{
+	color:red;
+}

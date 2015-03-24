@@ -4,8 +4,8 @@
 $data['title'] = $title;
 $data['id'] = $id;
 
-$this->load->view('admin/includes/header', $data);
-$this->load->view('admin/includes/nav', $data);
+$this->load->view('user/includes/header', $data);
+$this->load->view('user/includes/nav', $data);
 ?>
 <div class="col-md-12 content">
 		<?php $success = $this->session->flashdata('success'); if(!empty($success)): ?>
@@ -23,4 +23,4 @@ $this->load->view('admin/includes/nav', $data);
 	<?php $this->load->view($content); ?>
 </div>
 <?php 
-	$this->load->view('admin/includes/footer');
+	$this->load->view('user/includes/footer');
