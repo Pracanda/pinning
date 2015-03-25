@@ -32,4 +32,25 @@ class User extends CI_Controller {
 		$this->session->sess_destroy();
 		redirect('User');
 	}
+
+	public function create_log(){
+		$data=array(
+			'id'=>'create-log',
+			'title'=>'create-log',
+			'project_id'=>$this->input->post('project'),
+			'content'=>'user/create_logs'
+			);
+		$this->load->view('user/includes/template', $data);
+	}
+	public function log_entry(){
+		$result=$this->User_model->log_entry();
+		if($result){
+			$this->session->set_flashdata('success', 'Added Successfully');
+			redirect('log/'.$this->input->post('project_id'));
+		}
+		else{
+			$this->session->set_flashdata('error', 'Error! Try Again! ');
+			redirect('log/'.$this->input->post('project_id'));
+		}
+	}
 }

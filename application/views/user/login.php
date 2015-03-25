@@ -1,5 +1,5 @@
 <div>
-	<?php echo form_open_multipart('log', array('role'=>'form', 'class'=>'form-horizontal', 'data-toggle'=>'validator')); ?>
+	<?php echo form_open_multipart('User_login/user_login', array('role'=>'form', 'class'=>'form-horizontal', 'data-toggle'=>'validator')); ?>
 		<div class="form-group">
 			<label class="col-sm-2 control-label">Username :</label>
 			<div class="col-sm-10">
@@ -13,7 +13,7 @@
 			</div>
 		</div>
 		<div class="submit">
-			<button type="submit" class="btn btn-default btn-raised">CREATE</button>
+			<button type="submit" class="btn btn-default btn-raised">login</button>
 		</div>
 	<?php echo form_close(); ?>
 </div>

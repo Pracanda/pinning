@@ -175,6 +175,38 @@ class Home extends CI_Controller {
 			}
 		}
 	}
+	public function update_income(){
+		$data=array(
+			'id'=>'update-income',
+			'title'=>'update-income',
+			'income'=>$this->db->get_where('income',array('id'=>$this->uri->segment(3)))->result(),
+			'content'=>'admin/update_income'
+			);
+		$this->load->view('admin/includes/template',$data);
+	}
+
+	public function income_updated(){
+		$result=$this->Admin_model->income_updated();
+		if($result){
+			$this->session->set_flashdata('success', 'Edeted Successfully');
+			redirect('myAccount');
+		}
+		else{
+			$this->session->set_flashdata('error', 'Error!! Try Again.');
+			redirect('myAccount');
+		}
+	}
+
+	public function view_log(){
+		$project=$this->input->post('project');
+		$data=array(
+			'id'=>'view-log',
+			'title'=>'view-log',
+			'log'=>$this->db->order_by('date','desc')->get_where('project_logs',array('project_id'=>$project))->result(),
+			'content'=>'admin/home'
+			);
+		$this->load->view('admin/includes/template',$data);
+	}
 
 	function sendEmail($from,$to,$subject,$message){
 		 $config = Array(

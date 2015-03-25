@@ -11,7 +11,7 @@ class Admin_model extends CI_Model{
 
 	public function store_entry(){
 		$data = array(
-  					'client'=>$this->input->post('client'),
+  				'client'=>$this->input->post('client'),
 					'org' => $this->input->post('org'),
 					'website' =>$this->input->post('website'),
 					'date_deal' => $this->input->post('date_deal'),
@@ -64,7 +64,7 @@ class Admin_model extends CI_Model{
 
   	public function income_add(){
   		$data=array(
-  			'client_name'=>$this->input->post('client'),
+  			'client_id'=>$this->input->post('client'),
   			'dealed_price'=>$this->input->post('dealed_price'),
   			'advance_amount'=>$this->input->post('advance_amount'),
   			'received_by'=>$this->input->post('received_by'),
@@ -78,6 +78,23 @@ class Admin_model extends CI_Model{
   				return false;
   			}
   	}
+ 
+    public function income_updated(){
+        $data=array(
+          'dealed_price'=>$this->input->post('dealed_price'),
+          'advance_amount'=>$this->input->post('advance_amount'),
+          'received_by'=>$this->input->post('received_by'),
+          'due_amount'=>$this->input->post('due_amount')
+          );
+        $this->db->where('id',$this->input->post('hid'))->update("income", $data);
+          if($this->db->affected_rows()>0){
+            return true;
+          }
+          else{
+            return false;
+          }
+    }
+
   	public function fund_add(){
   		$data=array(
   			'taken_by'=>$this->input->post('taken_by'),

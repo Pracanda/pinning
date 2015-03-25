@@ -16,16 +16,18 @@
 			  			<th>Advance Amount</th>
 			  			<th>Received By</th>
 			  			<th>Due Amount</th>
+			  			<th>Update</th>
 			  		</tr>
 					<?php $i=1; foreach($income as $row): ?>
-					<?php $cid=$this->db->get_where('client',array('org'=>$row->client_name))->result(); ?>
+					<?php $cid=$this->db->get_where('client',array('id'=>$row->client_id))->result(); ?>
 			  		<tr>
 			  			<td><?php echo $i++; ?></td>
-			  			<td><?php echo anchor("home/edit_client/".$cid[0]->id, $row->client_name); ?></td>
+			  			<td><?php echo anchor("Home/edit_client/".$cid[0]->id, $cid[0]->org); ?></td>
 			  			<td><?php echo $row->dealed_price; ?></td>
 			  			<td><?php echo $row->advance_amount; ?></td>
 			  			<td><?php echo $row->received_by; ?></td>
 			  			<td><?php echo $row->due_amount; ?></td>
+			  			<td><?php echo anchor("Home/update_income/".$row->id, "update");?></td>
 			  		</tr>
 			  		<?php endforeach; ?>
 				</table>	
