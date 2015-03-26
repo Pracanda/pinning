@@ -24,7 +24,7 @@
 
 </hr>
 	<div style="text-align:Center;">
-		<h2>Fund and Expenses Of Company</h2>
+		<h2>Economy Of the Company</h2>
 	</div>
 		<?php $income=$this->db->get('income')->result(); ?>
 		<?php $total_income=0; ?>

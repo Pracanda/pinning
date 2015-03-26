@@ -1,5 +1,5 @@
-<h1 class="heading">Entry form</h1>
-
+<h1 class="heading">New Client</h1>
+<?php $dealer=$this->db->get('user')->result(); ?>
 <?php echo form_open_multipart('home/store_entry', array('role'=>'form', 'class'=>'form-horizontal', 'data-toggle'=>'validator')); ?>
 <div class="form-group">
 	<label class="col-sm-2 control-label">Client Name :</label>
@@ -46,7 +46,11 @@
 <div class="form-group">
 	<label class="col-sm-2 control-label">Dealed By :</label>
 	<div class="col-sm-10">
-		<input type="text" class="form-control" placeholder="Enter dealer" name="dealer" required>
+		<select name="dealer">
+			<?php foreach($dealer as $row): ?>
+				<option value="<?php echo $row->id; ?>"><?php echo $row->username; ?></option>
+			<?php endforeach; ?>
+		</select>
 	</div>
 </div>
 

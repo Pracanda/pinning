@@ -19,13 +19,14 @@
 			  			<th>Update</th>
 			  		</tr>
 					<?php $i=1; foreach($income as $row): ?>
+					<?php $receiver=$this->db->get_where('user',array('id'=>$row->received_by))->result(); ?>
 					<?php $cid=$this->db->get_where('client',array('id'=>$row->client_id))->result(); ?>
 			  		<tr>
 			  			<td><?php echo $i++; ?></td>
 			  			<td><?php echo anchor("Home/edit_client/".$cid[0]->id, $cid[0]->org); ?></td>
 			  			<td><?php echo $row->dealed_price; ?></td>
 			  			<td><?php echo $row->advance_amount; ?></td>
-			  			<td><?php echo $row->received_by; ?></td>
+			  			<td><?php echo $receiver[0]->username; ?></td>
 			  			<td><?php echo $row->due_amount; ?></td>
 			  			<td><?php echo anchor("Home/update_income/".$row->id, "update");?></td>
 			  		</tr>
@@ -44,9 +45,10 @@
 			  			<th>Date</th>
 			  		</tr>
 					<?php $i=1; foreach($fund as $row): ?>
+					<?php $taker=$this->db->get_where('user',array('id'=>$row->taken_by))->result(); ?>
 			  		<tr>
 			  			<td><?php echo $i++; ?></td>
-			  			<td><?php echo $row->taken_by; ?></td>
+			  			<td><?php echo $taker[0]->username; ?></td>
 			  			<td><?php echo $row->amount; ?></td>
 			  			<td><?php echo $row->date; ?></td>
 			  		</tr>

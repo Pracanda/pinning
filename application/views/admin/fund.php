@@ -1,10 +1,14 @@
 <h1 class="heading">Fund Distribution</h1>
 <?php echo form_open_multipart('home/fund_add', array('role'=>'form', 'class'=>'form-horizontal', 'data-toggle'=>'validator')); ?>
-
+<?php $user=$this->db->get('user')->result(); ?>
 <div class="form-group">
 	<label class="col-sm-2 control-label">Taken By :</label>
 	<div class="col-sm-10">
-		<input type="text" class="form-control" name="taken_by" required>
+		<select name="taken_by">
+			<?php foreach($user as $row): ?>
+				<option value="<?php echo $row->id; ?>"><?php echo $row->username; ?></option>
+			<?php endforeach; ?>
+		</select>
 	</div>
 </div>
 

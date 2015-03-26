@@ -29,6 +29,26 @@ class Home extends CI_Controller {
 		$this->load->view('admin/includes/template', $data);
 	}
 
+	/*Company Profile*/
+	public function company_profile(){
+		$data=array(
+			'id'=>'profile',
+			'title'=>'profile',
+			'content'=>'admin/company_profile'
+			);
+		$this->load->view('admin/includes/template', $data);
+	}
+
+	public function check_expiry(){
+		$data = array(
+			'id' => 'check-expiry',
+			'title' => 'check-expiry',
+			'content' => 'admin/check_expiry',
+			'clients'=>$this->db->get("client")->result()
+		);
+		$this->load->view('admin/includes/template', $data);
+	}
+
 	public function my_client(){
 		$data=array(
 			'id'=>'myClient',
