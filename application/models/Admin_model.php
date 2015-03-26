@@ -66,6 +66,9 @@ class Admin_model extends CI_Model{
   		$data=array(
   			'client_id'=>$this->input->post('client'),
   			'dealed_price'=>$this->input->post('dealed_price'),
+        'dealed_on'=>$this->input->post('dealed_on'),
+        'year'=>date('Y'),
+        'month'=>date('M'),
   			'advance_amount'=>$this->input->post('advance_amount'),
   			'received_by'=>$this->input->post('received_by'),
   			'due_amount'=>$this->input->post('due_amount')
@@ -99,7 +102,9 @@ class Admin_model extends CI_Model{
   		$data=array(
   			'taken_by'=>$this->input->post('taken_by'),
   			'amount'=>$this->input->post('amount'),
-  			'date'=>$this->input->post('date')
+  			'date'=>$this->input->post('date'),
+        'year'=>date('Y'),
+        'month'=>date('M')
   			);
   		$this->db->insert("funding", $data);
   			if($this->db->affected_rows()>0){
@@ -113,7 +118,9 @@ class Admin_model extends CI_Model{
   		$data=array(
   			'expense'=>$this->input->post('expense'),
   			'amount'=>$this->input->post('amount'),
-  			'date'=>$this->input->post('date')
+  			'date'=>$this->input->post('date'),
+        'year'=>date('Y'),
+        'month'=>date('M')
   			);
   		$this->db->insert("expense", $data);
   			if($this->db->affected_rows()>0){

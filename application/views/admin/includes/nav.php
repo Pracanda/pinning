@@ -3,6 +3,7 @@
 		<nav class="nav navbar-default navigation">
 			<ul class="navbar">
 				<li><a href="<?php echo base_url('Home'); ?>">Home</a></li>
+				<li><a href="<?php echo base_url('companyProfile'); ?>">Profile</a></li>
 				<li><a href="<?php echo base_url('Home/add_client'); ?>">Add Client</a></li>
 				<li class="settings"><a href="<?php echo base_url('myClient'); ?>">My Client</a></li>
 				<li><a href="<?php echo base_url('myAccount'); ?>">My Account</a></li>
