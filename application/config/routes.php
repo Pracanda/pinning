@@ -58,3 +58,4 @@ $route['logout'] = 'Home/admin_logout';
 $route['createUser'] = 'Home/create_user';
 $route['log']='User/create_log';
 $route['log/(:num)']="User/create_log";
+$route['myProfile']="User/my_profile";
