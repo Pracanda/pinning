@@ -53,4 +53,13 @@ class User extends CI_Controller {
 			redirect('log/'.$this->input->post('project_id'));
 		}
 	}
+
+	public function my_profile(){
+		$data=array(
+			'id'=>'my-profile',
+			'title'=>'my-profile',
+			'content'=>'user/my_profile'
+			);
+		$this->load->view('user/includes/template', $data);
+	}
 }
