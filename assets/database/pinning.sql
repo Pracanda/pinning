@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 26, 2015 at 10:18 पूर्वाह्न
+-- Generation Time: Mar 27, 2015 at 05:20 पूर्वाह्न
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -60,15 +60,16 @@ CREATE TABLE IF NOT EXISTS `client` (
   `domain_status` int(11) NOT NULL DEFAULT '0',
   `hosting_status` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `client`
 --
 
 INSERT INTO `client` (`id`, `client`, `org`, `website`, `date_deal`, `domain_expire`, `hosting_expire`, `dealer`, `contact`, `email`, `domain_status`, `hosting_status`) VALUES
-(1, 'asdf', 'askdfgj', 'http://www.pinesofts.com', '2015-03-07', '2015-03-29', '2015-03-19', 'dhfasd', '9887867', 'prachanda.gurung@gmail.com', 1, 1),
-(2, 'himalayan tiger', 'trek and adventure', 'http://www.htnpl.com', '2015-03-17', '2015-03-30', '2015-03-31', 'lambe', '8796543', 'czinka62@yahoo.com', 1, 1);
+(1, 'asdf', 'askdfgj', 'http://www.pinesofts.com', '2015-03-07', '2015-03-29', '2015-03-19', '1', '9887867', 'prachanda.gurung@gmail.com', 1, 1),
+(2, 'himalayan tiger', 'trek and adventure', 'http://www.htnpl.com', '2015-03-17', '2015-03-30', '2015-03-31', '2', '8796543', 'czinka62@yahoo.com', 1, 1),
+(3, 'the ', 'jukson.com', 'http://www.chartjs.org/docs/', '2015-01-01', '2015-01-01', '2015-01-31', '2', '878566545', 'czinka62@yahoo.com', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -81,15 +82,18 @@ CREATE TABLE IF NOT EXISTS `expense` (
   `expense` text NOT NULL,
   `amount` int(11) NOT NULL,
   `date` text NOT NULL,
+  `year` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `month` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `expense`
 --
 
-INSERT INTO `expense` (`id`, `expense`, `amount`, `date`) VALUES
-(1, 'waterjar', 70, '2015-01-01');
+INSERT INTO `expense` (`id`, `expense`, `amount`, `date`, `year`, `month`) VALUES
+(4, 'additionla', 10000, '2015-12-31', '2015', '12'),
+(5, 'tiffin', 2000, '2016-01-30', '2016', '01');
 
 -- --------------------------------------------------------
 
@@ -102,17 +106,17 @@ CREATE TABLE IF NOT EXISTS `funding` (
   `taken_by` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `amount` int(11) NOT NULL,
   `date` text NOT NULL,
+  `year` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `month` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `funding`
 --
 
-INSERT INTO `funding` (`id`, `taken_by`, `amount`, `date`) VALUES
-(1, 'prachanda', 10000, '2015-03-18'),
-(2, 'lalit', 3000, '2014-01-01'),
-(3, 'khoste', 200, '2015-01-01');
+INSERT INTO `funding` (`id`, `taken_by`, `amount`, `date`, `year`, `month`) VALUES
+(6, '2', 15000, '2015-03-27', '2015', '03');
 
 -- --------------------------------------------------------
 
@@ -124,18 +128,21 @@ CREATE TABLE IF NOT EXISTS `income` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `client_id` int(11) NOT NULL,
   `dealed_price` int(11) NOT NULL,
+  `dealed_on` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `year` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `month` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `advance_amount` int(11) NOT NULL,
   `received_by` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `due_amount` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `income`
 --
 
-INSERT INTO `income` (`id`, `client_id`, `dealed_price`, `advance_amount`, `received_by`, `due_amount`) VALUES
-(3, 2, 6788, 667, 'me', 867);
+INSERT INTO `income` (`id`, `client_id`, `dealed_price`, `dealed_on`, `year`, `month`, `advance_amount`, `received_by`, `due_amount`) VALUES
+(6, 3, 25000, '2014-12-21', '2014', '12', 15000, '1', 10000);
 
 -- --------------------------------------------------------
 

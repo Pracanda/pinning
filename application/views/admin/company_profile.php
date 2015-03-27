@@ -28,6 +28,4 @@
 			responsive: true
 		});
 	}
-</script>
-<?php echo date('M'); ?>
-<?php echo date('Y'); ?>
+</script>		
