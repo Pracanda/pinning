@@ -67,7 +67,7 @@
 								<option value="electricity">Electricity</option>
 								<option value="rent">Rent</option>
 								<option value="internet">Internet</option>
-								<option value="additionla">Additional</option>
+								<option value="additional">Additional</option>
 							</select>
 						</div>
 					</div>

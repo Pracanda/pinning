@@ -174,25 +174,34 @@ class Home extends CI_Controller {
 		$this->load->view('admin/includes/template',$data);
 	}
 	public function creating_user(){
-		$pass=uniqid();
-		$user=$this->input->post('username');
-		$email=$this->input->post('email');
-		$message="Username:".$user."Password:".$pass;
-		if($this->sendEmail("pinesofts",$email,"user account",$message)){
-			$data=array(
-				'username'=>$user,
-				'password'=>sha1($pass),
-				'email'=>$email
-				);
-			$result=$this->Admin_model->create_user($data);
-			if($result){
-				$this->session->set_flashdata('success', 'Added Successfully');
-				redirect('home');
+		$check=$this->db->get_where('user',array('username'=>$this->input->post('username')))->result();
+		if(empty($check)){
+			$pass=uniqid();
+			$user=$this->input->post('username');
+			$email=$this->input->post('email');
+			$message="Username:".$user."Password:".$pass;
+			if($this->sendEmail("pinesofts",$email,"user account",$message)){
+				$data=array(
+					'username'=>$user,
+					'password'=>sha1($pass),
+					'email'=>$email
+					);
+				$result=$this->Admin_model->create_user($data);
+				if($result){
+					$this->session->set_flashdata('success', 'Added Successfully');
+					redirect('createUser');
+				}
+				else{
+					$this->session->set_flashdata('error', 'Error! Try Again');
+					redirect('createUser');
+				}
 			}
-			else{
-				$this->session->set_flashdata('error', 'Error! Try Again');
-				redirect('home');
-			}
+		}
+		else{
+			$this->session->set_flashdata('error', 'Username Already Taken!! Choose Another.');
+			$this->session->set_flashdata('new_user', $this->input->post('username'));
+			$this->session->set_flashdata('new_email', $this->input->post('email'));
+			redirect('createUser');
 		}
 	}
 	public function update_income(){

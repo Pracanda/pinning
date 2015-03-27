@@ -63,12 +63,14 @@ class Admin_model extends CI_Model{
   	}
 
   	public function income_add(){
+       $year=explode("-", $this->input->post('dealed_on'));
+       $month=explode("-",$year[1]);
   		$data=array(
   			'client_id'=>$this->input->post('client'),
   			'dealed_price'=>$this->input->post('dealed_price'),
         'dealed_on'=>$this->input->post('dealed_on'),
-        'year'=>date('Y'),
-        'month'=>date('M'),
+        'year'=>$year[0],
+        'month'=>$month[0],
   			'advance_amount'=>$this->input->post('advance_amount'),
   			'received_by'=>$this->input->post('received_by'),
   			'due_amount'=>$this->input->post('due_amount')
@@ -99,12 +101,14 @@ class Admin_model extends CI_Model{
     }
 
   	public function fund_add(){
+      $year=explode("-", $this->input->post('date'));
+      $month=explode("-",$year[1]);
   		$data=array(
   			'taken_by'=>$this->input->post('taken_by'),
   			'amount'=>$this->input->post('amount'),
   			'date'=>$this->input->post('date'),
-        'year'=>date('Y'),
-        'month'=>date('M')
+        'year'=>$year[0],
+        'month'=>$month[0]
   			);
   		$this->db->insert("funding", $data);
   			if($this->db->affected_rows()>0){
@@ -115,12 +119,14 @@ class Admin_model extends CI_Model{
   			}
   	}
   	public function add_expense(){
+      $year=explode("-", $this->input->post('date'));
+      $month=explode("-",$year[1]);
   		$data=array(
   			'expense'=>$this->input->post('expense'),
   			'amount'=>$this->input->post('amount'),
   			'date'=>$this->input->post('date'),
-        'year'=>date('Y'),
-        'month'=>date('M')
+        'year'=>$year[0],
+        'month'=>$month[0]
   			);
   		$this->db->insert("expense", $data);
   			if($this->db->affected_rows()>0){
