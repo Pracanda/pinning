@@ -236,8 +236,19 @@ class Home extends CI_Controller {
 			);
 		$this->load->view('admin/includes/template',$data);
 	}
+	public function company_record(){
+		$funding=$this->db->get_where('funding',array('year'=>$this->input->post('year')))->result();
+		$income=$this->db->get_where('income',array('year'=>$this->input->post('year')))->result();
+		$data=array(
+			'id'=>'company-record',
+			'title'=>'company-record',
+			'expense'=>$this->db->get_where('expense',array('year'=>$this->input->post('year')))->result(),
+			'content'=>'admin/company_profile'
+			);
+		$this->load->view('admin/includes/template',$data);
+	}
 
-	function sendEmail($from,$to,$subject,$message){
+	public function sendEmail($from,$to,$subject,$message){
 		 $config = Array(
 		  'protocol' => 'smtp',
 		  'smtp_host' => 'smtp.sendgrid.net',

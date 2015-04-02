@@ -1,4 +1,4 @@
-<?php foreach ($clients as $row) { ?>
+<?php foreach ($clients as $row):?>
 	<?php $today=date('Y-m-d'); ?>
 	<?php if($row->domain_status!=1): ?>
 		<?php if(strcmp(strtotime($today),strtotime($row->domain_expire))>0): ?>
@@ -64,3 +64,4 @@
 			?>
 		<?php endif; ?>
 	<?php endif; ?>
+<?php endforeach; ?>
