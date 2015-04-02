@@ -1,31 +1,37 @@
-<div style="width:30%">
-	<div>
-		<canvas id="canvas" height="450" width="600"></canvas>
-	</div>
+<div>
+	<?php echo form_open_multipart('Home/company_record', array('role'=>'form', 'class'=>'form-horizontal', 'data-toggle'=>'validator')); ?>
+		
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Select Year :</label>
+			<div class="col-sm-10">
+				<select name="year">
+					<?php $date=date('Y'); ?>
+					<?php for ($i=$date; $i >'2009'; $i--) { ?>
+						<option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+					<?php } ?>			
+				</select>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label"></label>
+			<div class="col-sm-10">
+				<button type="submit" class="btn btn-default btn-raised">view</button>
+			</div>
+		</div>
+	<?php echo form_close(); ?>
 </div>
-<script>
-		var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
-		var lineChartData = {
-			labels : ["January","February","March","April","May","June","July","August"],
-			datasets : [
-				{
-					label: "My First dataset",
-					fillColor : "rgba(220,220,220,0.2)",
-					strokeColor : "rgba(220,220,220,1)",
-					pointColor : "rgba(220,220,220,1)",
-					pointStrokeColor : "#fff",
-					pointHighlightFill : "#fff",
-					pointHighlightStroke : "rgba(220,220,220,1)",
-					data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
-				}
-			]
 
-		}
-
-	window.onload = function(){
-		var ctx = document.getElementById("canvas").getContext("2d");
-		window.myLine = new Chart(ctx).Line(lineChartData, {
-			responsive: true
-		});
-	}
-</script>		
+<div>	
+	<?php if(!empty($expense)): ?>
+		<?php print_r($expense); ?>
+	<?php else: ?>
+		<?php $year=date('Y'); ?>
+		<?php echo $year; ?>
+		<div style="width:30%">
+			<div>
+				<canvas id="canvas" height="450" width="600"></canvas>
+			</div>
+		</div>
+		
+	<?php endif; ?>
+</div>

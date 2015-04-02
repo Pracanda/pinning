@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 27, 2015 at 05:20 पूर्वाह्न
+-- Generation Time: Apr 01, 2015 at 11:46 पूर्वाह्न
 -- Server version: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `expense` (
   `year` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `month` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `expense`
@@ -93,7 +93,9 @@ CREATE TABLE IF NOT EXISTS `expense` (
 
 INSERT INTO `expense` (`id`, `expense`, `amount`, `date`, `year`, `month`) VALUES
 (4, 'additionla', 10000, '2015-12-31', '2015', '12'),
-(5, 'tiffin', 2000, '2016-01-30', '2016', '01');
+(5, 'tiffin', 2000, '2016-01-30', '2016', '01'),
+(6, 'internet', 12344, '2015-03-28', '2015', '03'),
+(7, 'tiffin', 12345, '2015-12-02', '2015', '12');
 
 -- --------------------------------------------------------
 
