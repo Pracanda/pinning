@@ -28,6 +28,13 @@ class User extends CI_Controller {
 		);
 		$this->load->view('user/includes/template', $data);
 	}
+
+	function projects(){
+		$data = array(
+			'id' => 'projects',
+		);
+	}
+
 	public function logout(){
 		$this->session->sess_destroy();
 		redirect('User');
@@ -35,22 +42,54 @@ class User extends CI_Controller {
 
 	public function create_log(){
 		$data=array(
-			'id'=>'create-log',
-			'title'=>'create-log',
-			'project_id'=>$this->input->post('project'),
-			'content'=>'user/create_logs'
-			);
+			'id'=>'log',
+			'title'=>'select project',
+			'content'=>'user/clients',
+			'clients' => $this->db->get("client")->result()
+		);
 		$this->load->view('user/includes/template', $data);
 	}
+
+	function income_log(){
+		$client = $this->db->get_where("client", array("id"=>$this->uri->segment(3)))->result();
+		if(empty($client)){
+			show_404();
+		}
+		$data = array(
+			'id' => 'log',
+			'title' => 'income log of '.$client[0]->client,
+			'content' => 'user/income_log',
+			'income' => $this->db->get_where("income", array("client_id"=>$client[0]->id))->result(),
+			'client' => $client[0]
+		);
+
+		$this->load->view("user/includes/template", $data);
+	}
+
+	public function log_new(){
+		$client = $this->db->get_where("client", array("id" => $this->uri->segment(3)))->result();
+		if(empty($client)){
+			show_404();
+		}
+		$data = array(
+			'id' => 'log',
+			'title' => 'log for '.$client[0]->client,
+			'content' => 'user/create_logs',
+			'client' => $client[0]
+		);
+
+		$this->load->view("user/includes/template", $data);
+	}
+
 	public function log_entry(){
 		$result=$this->User_model->log_entry();
 		if($result){
 			$this->session->set_flashdata('success', 'Added Successfully');
-			redirect('log/'.$this->input->post('project_id'));
+			redirect('log/work/'.$this->input->post('project_id'));
 		}
 		else{
 			$this->session->set_flashdata('error', 'Error! Try Again! ');
-			redirect('log/'.$this->input->post('project_id'));
+			redirect('log/work/'.$this->input->post('project_id'));
 		}
 	}
 
