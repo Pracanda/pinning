@@ -101,4 +101,19 @@ class User extends CI_Controller {
 			);
 		$this->load->view('user/includes/template', $data);
 	}
+	function change_password(){
+		$confirm = $this->User_model->change_password();
+		if($confirm === true){
+			$this->session->set_flashdata('success', 'Password changed');
+			redirect('myProfile');
+		}
+		else if($confirm === false){
+			$this->session->set_flashdata('error', 'Error! Try again');
+			redirect('myProfile');
+		}
+		else{
+			$this->session->set_flashdata('error', 'Something went wrong! Try again');
+			redirect('myProfile');
+		}
+	}
 }

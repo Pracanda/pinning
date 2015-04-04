@@ -140,7 +140,7 @@
   			<td><?php echo $row->contact; ?></td>
         <td>
           <a href="#" data-toggle="modal" class="btn btn-inverse" data-target="#view-client<?php echo $row->id; ?>"><i class="icon-eye-open"></i></a>
-          <a href="<?php echo base_url('Home/edit_client'.$row->id) ?>" class="btn btn-primary"><i class="icon-edit"></i></a>
+          <a href="<?php echo base_url('Home/edit_client/'.$row->id) ?>" class="btn btn-primary"><i class="icon-edit"></i></a>
         </td>
   		</tr>
   		<?php endforeach; ?>

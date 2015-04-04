@@ -11,7 +11,7 @@
           <?php foreach($clients as $client): ?>
               <tr>
                 <th>
-                    <a href="<?php echo base_url('log/'.$client->id) ?>"><?php echo ucfirst($client->client); ?></a>
+                    <a href="<?php echo base_url('log/work/'.$client->id) ?>"><?php echo ucfirst($client->client); ?></a>
                     <span style="float: right;">
                         <small class="badge"><a href="<?php echo base_url('log/work/'.$client->id) ?>" class="cw">Work Logs</a></small>
                         <small class="badge"><a href="<?php echo base_url('log/income/'.$client->id) ?>" class="cw">Income Logs</a></small>
