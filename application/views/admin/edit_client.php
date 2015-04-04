@@ -44,13 +44,6 @@
 </div>
 
 <div class="form-group">
-	<label class="col-sm-2 control-label">Dealed By :</label>
-	<div class="col-sm-10">
-		<input type="text" class="form-control" value="<?php echo $info[0]->dealer; ?>" name="dealer" required>
-	</div>
-</div>
-
-<div class="form-group">
 	<label class="col-sm-2 control-label">Contact Number:</label>
 	<div class="col-sm-10">
 		<input type="number" class="form-control" value="<?php echo $info[0]->contact; ?>" name="contact" required>

@@ -26,4 +26,21 @@ class User_model extends CI_Model{
   				return false;
   			}
  	}
+ 	function change_password(){
+		$this->db->where('password', sha1($this->input->post('current_password')));
+		if($this->db->get('user')->num_rows() == 1){
+
+			$data = array(
+				'password' => sha1($this->input->post('new_password'))
+			);
+
+			$this->db->where('username', $this->session->userdata('user'));
+			if($this->db->update('user', $data)){
+				$this->session->set_userdata("password", sha1($this->input->post("new_password")));
+				return true;
+			}
+			return false;
+		}
+		return "Invalid current password.";
+	}
 }
