@@ -30,6 +30,13 @@
 </div>
 
 <div class="form-group">
+	<label class="col-sm-2 control-label">Dealed Amount :</label>
+	<div class="col-sm-10">
+		<input type="number" class="form-control" value="<?php echo $info[0]->dealing_price; ?>" name="dealing_price" required>
+	</div>
+</div>
+
+<div class="form-group">
 	<label class="col-sm-2 control-label">Domain Expire On :</label>
 	<div class="col-sm-10">
 		<input type="date" class="form-control" value="<?php echo $info[0]->domain_expire; ?>" name="domain_expire" required>

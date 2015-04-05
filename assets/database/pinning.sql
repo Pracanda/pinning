@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.11
+-- version 4.1.12
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 04, 2015 at 08:12 AM
--- Server version: 5.6.21
--- PHP Version: 5.6.3
+-- Generation Time: Apr 04, 2015 at 11:57 पूर्वाह्न
+-- Server version: 5.6.16
+-- PHP Version: 5.5.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -27,10 +27,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `admin` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` text NOT NULL,
-  `password` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `password` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `admin`
@@ -46,7 +47,7 @@ INSERT INTO `admin` (`id`, `username`, `password`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `client` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `client` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `org` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `website` text CHARACTER SET utf8 COLLATE utf8_bin,
@@ -58,8 +59,9 @@ CREATE TABLE IF NOT EXISTS `client` (
   `email` text,
   `domain_status` int(11) NOT NULL DEFAULT '0',
   `hosting_status` int(11) NOT NULL DEFAULT '0',
-  `dealing_price` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+  `dealing_price` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `client`
@@ -77,13 +79,14 @@ INSERT INTO `client` (`id`, `client`, `org`, `website`, `date_deal`, `domain_exp
 --
 
 CREATE TABLE IF NOT EXISTS `expense` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `expense` text NOT NULL,
   `amount` int(11) NOT NULL,
   `date` text NOT NULL,
   `year` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `month` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+  `month` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Dumping data for table `expense`
@@ -103,13 +106,14 @@ INSERT INTO `expense` (`id`, `expense`, `amount`, `date`, `year`, `month`) VALUE
 --
 
 CREATE TABLE IF NOT EXISTS `funding` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `taken_by` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `amount` int(11) NOT NULL,
   `date` text NOT NULL,
   `year` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `month` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+  `month` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `funding`
@@ -125,13 +129,14 @@ INSERT INTO `funding` (`id`, `taken_by`, `amount`, `date`, `year`, `month`) VALU
 --
 
 CREATE TABLE IF NOT EXISTS `income` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `client_id` int(11) NOT NULL,
   `received_date` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `received_by` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `received_amount` int(11) NOT NULL,
-  `remarks` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+  `remarks` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `income`
@@ -147,14 +152,15 @@ INSERT INTO `income` (`id`, `client_id`, `received_date`, `received_by`, `receiv
 --
 
 CREATE TABLE IF NOT EXISTS `project_logs` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `date` text NOT NULL,
   `start_time` text NOT NULL,
   `end_time` text NOT NULL,
   `commitment` text NOT NULL,
   `user_id` int(11) NOT NULL,
-  `project_id` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+  `project_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `project_logs`
@@ -179,11 +185,12 @@ INSERT INTO `project_logs` (`id`, `date`, `start_time`, `end_time`, `commitment`
 --
 
 CREATE TABLE IF NOT EXISTS `user` (
-`id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` text NOT NULL,
   `password` text NOT NULL,
-  `email` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `email` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `user`
@@ -191,93 +198,8 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`id`, `username`, `password`, `email`) VALUES
 (1, 'pracanda', 'd3d3c9b08aa454d3d3512fd20bd686e65f7f75d2', 'prachanda.gurung@gmail.com'),
-(2, 'pine', '70f910cbd2983be954d35a35bb8c6ce6d79de7ce', 'czinka62@hotmail.com');
+(2, 'pine', 'd3d3c9b08aa454d3d3512fd20bd686e65f7f75d2', 'czinka62@hotmail.com');
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `admin`
---
-ALTER TABLE `admin`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `client`
---
-ALTER TABLE `client`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `expense`
---
-ALTER TABLE `expense`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `funding`
---
-ALTER TABLE `funding`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `income`
---
-ALTER TABLE `income`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `project_logs`
---
-ALTER TABLE `project_logs`
- ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `user`
---
-ALTER TABLE `user`
- ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `admin`
---
-ALTER TABLE `admin`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `client`
---
-ALTER TABLE `client`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `expense`
---
-ALTER TABLE `expense`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
---
--- AUTO_INCREMENT for table `funding`
---
-ALTER TABLE `funding`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT for table `income`
---
-ALTER TABLE `income`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
---
--- AUTO_INCREMENT for table `project_logs`
---
-ALTER TABLE `project_logs`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
---
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
-MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

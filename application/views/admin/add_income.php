@@ -14,23 +14,16 @@
 </div>
 
 <div class="form-group">
-	<label class="col-sm-2 control-label">Dealed Price :</label>
+	<label class="col-sm-2 control-label">Received On :</label>
 	<div class="col-sm-10">
-		<input type="number" class="form-control" name="dealed_price" required>
-	</div>
-</div>
-
-<div class="form-group">
-	<label class="col-sm-2 control-label">Dealed On :</label>
-	<div class="col-sm-10">
-		<input type="date" class="form-control" name="dealed_on" required>
+		<input type="date" class="form-control" name="received_date" required>
 	</div>
 </div>
 
 <div class="form-group">
 	<label class="col-sm-2 control-label">Advance amount :</label>
 	<div class="col-sm-10">
-		<input type="number" class="form-control" name="advance_amount" required>
+		<input type="number" class="form-control" name="received_amount" required>
 	</div>
 </div>
 
@@ -46,9 +39,9 @@
 </div>
 
 <div class="form-group">
-	<label class="col-sm-2 control-label">Due Amount :</label>
+	<label class="col-sm-2 control-label">Remarks :</label>
 	<div class="col-sm-10">
-		<input type="number" class="form-control" name="due_amount" required>
+		<input type="text" class="form-control" name="remarks">
 	</div>
 </div>
 
