@@ -16,6 +16,7 @@
 			  			<th>Advance Amount</th>
 			  			<th>Received By</th>
 			  			<th>Due Amount</th>
+			  			<th>Remarks</th>
 			  			<th>Update</th>
 			  		</tr>
 					<?php $i=1; foreach($income as $row): ?>
@@ -24,10 +25,11 @@
 			  		<tr>
 			  			<td><?php echo $i++; ?></td>
 			  			<td><?php echo anchor("Home/edit_client/".$cid[0]->id, $cid[0]->org); ?></td>
-			  			<td><?php echo $row->dealed_price; ?></td>
-			  			<td><?php echo $row->advance_amount; ?></td>
+			  			<td><?php echo $cid[0]->dealing_price; ?></td>
+			  			<td><?php echo $row->received_amount; ?></td>
 			  			<td><?php echo $receiver[0]->username; ?></td>
-			  			<td><?php echo $row->due_amount; ?></td>
+			  			<td><?php echo $cid[0]->dealing_price-$row->received_amount; ?></td>
+			  			<td><?php echo $row->remarks; ?></td>
 			  			<td><?php echo anchor("Home/update_income/".$row->id, "update");?></td>
 			  		</tr>
 			  		<?php endforeach; ?>

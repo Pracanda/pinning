@@ -43,10 +43,11 @@ class Admin_model extends CI_Model{
   	public function client_edited(){
   		$cid=$this->input->post('cid');
   		$data = array(
-  					'client'=>$this->input->post('client'),
+  				'client'=>$this->input->post('client'),
 					'org' => $this->input->post('org'),
 					'website' =>$this->input->post('website'),
 					'date_deal' => $this->input->post('date_deal'),
+          'dealing_price' => $this->input->post('dealing_price'),
 					'hosting_expire' => $this->input->post('hosting_expire'),
 					'domain_expire' => $this->input->post('domain_expire'),
 					'dealer' => $this->input->post('dealer'),
@@ -63,17 +64,12 @@ class Admin_model extends CI_Model{
   	}
 
   	public function income_add(){
-       $year=explode("-", $this->input->post('dealed_on'));
-       $month=explode("-",$year[1]);
   		$data=array(
   			'client_id'=>$this->input->post('client'),
-  			'dealed_price'=>$this->input->post('dealed_price'),
-        'dealed_on'=>$this->input->post('dealed_on'),
-        'year'=>$year[0],
-        'month'=>$month[0],
-  			'advance_amount'=>$this->input->post('advance_amount'),
+        'received_date'=>$this->input->post('received_date'),
+  			'received_amount'=>$this->input->post('received_amount'),
   			'received_by'=>$this->input->post('received_by'),
-  			'due_amount'=>$this->input->post('due_amount')
+        'remarks'=>$this->input->post('remarks')
   			);
   		$this->db->insert("income", $data);
   			if($this->db->affected_rows()>0){
@@ -86,10 +82,8 @@ class Admin_model extends CI_Model{
  
     public function income_updated(){
         $data=array(
-          'dealed_price'=>$this->input->post('dealed_price'),
-          'advance_amount'=>$this->input->post('advance_amount'),
-          'received_by'=>$this->input->post('received_by'),
-          'due_amount'=>$this->input->post('due_amount')
+          'received_amount'=>$this->input->post('received_amount'),
+          'remarks'=>$this->input->post('remarks')
           );
         $this->db->where('id',$this->input->post('hid'))->update("income", $data);
           if($this->db->affected_rows()>0){

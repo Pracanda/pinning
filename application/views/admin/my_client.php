@@ -34,7 +34,7 @@
                     <div class="form-group">
                       <label class="col-sm-3 control-label">Price :</label>
                       <div class="col-sm-4">
-                        <input type="number" class="form-control" placeholder="Dealing Price" required>
+                        <input type="number" class="form-control" placeholder="Dealing Price" name="dealing_price" required>
                       </div>
                     </div>
 
